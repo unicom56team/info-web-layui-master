@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>审核员模式 人才审核-北京联通EAM平台</title>
+  <link rel="stylesheet" href="layui/css/layui.css" >
+  <link href="css/shenhe1.css" rel="stylesheet" type="text/css">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon"/><!--图标-->
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header" style="height:100px;">
+    <div >
+	  <img src="images/logo.png" class="logo">
+	  </div>
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+    
+    <ul class="layui-nav layui-layout-right">
+      
+      <li class="layui-nav-item linshi"><a href="">退出</a></li>
+    </ul>
+  </div>
+  
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll" style="background: #f9f9f9;">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        <li class="layui-nav-item layui-nav-itemed">
+          <a class="" href="shenhe1_daishen.html">待审阅</a>
+         
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">已完成</a>
+          <dl class="layui-nav-child">
+            <dd><a href="wancheng1_shichang.html">市场</a></dd>
+            <dd><a href="wancheng2_jishu.html">技术</a></dd>
+          </dl>
+        </li>
+       
+      </ul>
+    </div>
+  </div>
+  
+  <div class="layui-body">
+    <!-- 内容主体区域 -->
+    <div style="padding: 15px;margin-top: 25px;">
+		<fieldset class="layui-elem-field layui-field-title" ">
+		  <legend>待审核·人才审核</legend>
+		</fieldset>
+		
+		 
+		<table class="layui-table" lay-data="{url:'/test/table/demo2.json?v=3', cellMinWidth: 80, page: true}">
+		  <thead>
+			  
+		    <tr>
+				
+		      <th colspan="6" lay-data="{field:'username', width:80}">姓名ABC</th>
+		      
+		    </tr>
+		    <tr>
+		      <th colspan="6" lay-data="{field:'person', width:80}">技术人才</th>
+		    </tr>
+		    <tr>
+				<th lay-data="{checkbox:true, fixed:'left'}"></th>
+		      <th rowspan="2" lay-data="{field:'category',align: 'center'}">类别</th>
+		      <th lay-data="{field:'level',align: 'center'}">级别</th>
+		      <th lay-data="{field:'score',align: 'center'}">分值</th>
+			  <th  lay-data="{fixed: 'right', width: 160, align: 'center', toolbar: '#barDemo'}">操作</th>
+		      <th lay-data="{field:'score',align: 'center'}">备注</th>
+			</tr>
+		  </thead>
+		</table>
+		
+		<a class="layui-btn layui-btn-lg layui-btn-primary layui-btn-radius con" href="shenhe1_daishen.html" >审核完成</a>
+			
+	</div>
+  </div>
+  
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+    Copyright © 2019 Beijing Unicom
+  </div>
+</div>
+<script src="layui/layui.js" charset="utf-8"></script>
+<script>
+//JavaScript代码区域
+layui.use(['element','table'], function(){
+  var element = layui.element;
+  var table = layui.table;
+});
+</script>
+
+<script id="barDemo" type="text/html">
+  <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">编辑</a>
+  <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="del">删除</a>
+</script>
+  
+<script>
+layui.use('table', function(){
+  var table = layui.table; 
+  //监听单元格事件
+  table.on('tool(demoEvent)', function(obj){
+    var data = obj.data;
+    if(obj.event === 'setSign'){
+      layer.prompt({
+        formType: 2
+        ,title: '修改 分值 为 ['+ data.score +'] 的人才分值'
+        ,value: data.sign
+      }, function(value, index){
+        layer.close(index);
+        
+        //这里一般是发送修改的Ajax请求
+        
+        //同步更新表格和缓存对应的值
+        obj.update({
+          sign: value
+        });
+      });
+    }
+  });
+});
+</script>	   
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<title>北京联通EAM平台—人才申报系统</title>
+<link rel="icon" href="images/favicon.ico" type="image/x-icon"/><!--图标-->
+	
+<link href="css/index.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="layui/css/layui.css">
+<script src="layui/layui.js"></script>
+<script>
+		layui.use(['jquery', 'layer'], function(){ 
+		  var $ = layui.$ //重点处
+		  ,layer = layui.layer;
+		  //后面就跟你平时使用jQuery一样
+		//   $(document).ready(function(){
+		// 	$.get("http://127.0.0.1:8080/findType",function(data){
+		// 	  console.log(JSON.stringify(data));
+		//     });
+		// });
+
+		
+		$(document).ready(function(){
+		  $("button").click(function(){
+			  var user=document.forms["login"]["username"].value;
+			  var pass=document.forms["login"]["password"].value;
+			  console.log(user,pass);
+		    $.post("http://127.0.0.1:8080/userLogin",{
+				username:user,
+				password:pass,
+			},function(data){
+			  console.log(JSON.stringify(data));
+		    });
+		  });
+		});
+	});
+</script>
+</head>
+
+<body>
+ 
+<div>
+<div>
+<img  src = "images/logo.png"  class="logo" >
+</div>
+	
+<div style=" position: fixed;top: 45%;left: 35%; text-align: center;">
+<form class="layui-form" action="" name="login">
+	
+  <div class="layui-form-item">  
+    <label class="layui-form-label"><i class="layui-icon layui-icon-username"></i> 账号</label>
+    <div class="layui-input-block" style="width: 57%;">
+      <input type="text" id="username" name="username" required  lay-verify="required" placeholder="请输入OA账号" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+	  
+    <label class="layui-form-label"><i class="layui-icon layui-icon-password" ></i> 密码</label>
+    <div class="layui-input-inline" style="width: 57%;">
+      <input type="password" id="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+    </div>
+   <!-- <div class="layui-form-mid layui-word-aux">8-20字符，注意大小写</div>-->
+  </div>
+	
+	 <div class="layui-form-item">
+    <div class="layui-input-block" style="margin-left:0;min-height:0">
+      <button  id="txt" class="layui-btn" lay-submit>登录</button>
+      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+    </div>
+  </div>
+	
+	</form>
+</div>
+</div>
+ 
+
+<script>
+//Demo
+layui.use('form', function(){
+  var form = layui.form
+  
+  
+  //监听提交
+  form.on('submit(formDemo)', function(data){
+    console.log(data);
+  });
+  
+  
+ 
+  
+});
+  //实例化一个上传控件
+
+
+</script>
+</body>
+</html>

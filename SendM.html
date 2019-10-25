@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">	
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>上传评审材料—北京联通EAM平台</title>
+<link rel="icon" href="images/favicon.ico" type="image/x-icon"/><!--图标-->
+<link href="css/SendM.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="layui/css/layui.css">
+</head>
+
+<body>
+
+<ul class="layui-nav layui-bg-green" >
+  <img src="images/logo.png" class="logo">
+  <li class="layui-nav-item left" >
+	  <a href="">
+		  <button class="layui-btn" lay-submit lay-filter="formDemo">退出</button></a></li>
+	<!--按钮监听没有设置好-->
+</ul>
+
+<div class="layui-progress layui-progress-big jindu" lay-showPercent="true">
+  <div class="layui-progress-bar layui-bg-orange" lay-percent="3/3"></div>
+</div>
+	
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+  <legend>上传评审材料</legend>
+</fieldset>
+	
+  <div class="layui-btn-group kong">
+    <button class="layui-btn layui-btn-primary layui-btn-sm" type="button"><i class="layui-icon"></i></button>
+    <button class="layui-btn layui-btn-primary layui-btn-sm" type="button"><i class="layui-icon"></i></button>
+    <button class="layui-btn layui-btn-primary layui-btn-sm" type="button"><i class="layui-icon"></i></button>
+  </div>
+	
+	
+	<table class="layui-table" lay-filter="test3" lay-data="{url:'/test/table/demo1.json', id:'test3'}">
+  <thead>
+    <tr>
+      <th lay-data="{type:'checkbox'}">ID</th>
+      <th lay-data="{field:'id', width:80, sort: true}">ID</th>
+      <th lay-data="{field:'username', width:120, sort: true, edit: 'text'}">用户名</th>
+      <th lay-data="{field:'email', edit: 'text', minWidth: 150}">邮箱</th>
+      <th lay-data="{field:'sex', width:80, edit: 'text'}">性别</th>
+      <th lay-data="{field:'city', edit: 'text', minWidth: 100}">城市</th>
+      <th lay-data="{field:'experience', sort: true, edit: 'text'}">积分</th>
+    </tr>
+  </thead>
+</table>
+
+  
+<div class="layui-tab">
+	 <a class="layui-btn layui-btn-lg layui-btn-primary layui-btn-radius con" href="Pdata.html" target="_blank">已完成</a>
+</div>	
+	
+	<!--<div id="footer" class="layui-footer footer">
+         <p>Copyright © 2018 Beijing Unicom</p>
+	</div>-->
+  
+		
+	
+<script src="layui/layui.js" charset="utf-8"></script>
+
+<script>
+layui.use(['element','form', 'layedit',"table"], function(){
+  var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+  var form = layui.form
+  ,layer = layui.layer;
+  var table = layui.table;
+  
+  //监听单元格编辑
+  table.on('edit(test3)', function(obj){
+    var value = obj.value //得到修改后的值
+    ,data = obj.data //得到所在行所有键值
+    ,field = obj.field; //得到字段
+    layer.msg('[ID: '+ data.id +'] ' + field + ' 字段更改为：'+ value);
+  });
+});
+
+	
+	
+</script>
+</body>
+</html>

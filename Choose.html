@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">	
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>选择申报专业-北京联通EAM平台</title>
+<link rel="icon" href="images/favicon.ico" type="image/x-icon"/><!--图标-->
+<link href="css/Choose.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="layui/css/layui.mobile.css">
+<link rel="stylesheet" href="layui/css/layui.css" media="all">
+</head>
+
+<body>
+
+<ul class="layui-nav layui-bg-green" >
+  <img src="images/logo.png" class="logo">
+  <li class="layui-nav-item left" >
+	  <a href="">
+		  <button class="layui-btn" lay-submit lay-filter="formDemo">退出</button></a></li>
+	<!--按钮监听没有设置好-->
+</ul>
+
+<div class="layui-progress layui-progress-big jindu" lay-showPercent="true">
+  <div class="layui-progress-bar layui-bg-orange" lay-percent="2/3"></div>
+</div>
+	
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+  <legend>选择申报专业 </legend>
+</fieldset>
+	
+
+	
+<form class="layui-form" action="">
+	  <div class="layui-form-item">
+    <label class="layui-form-label"><i class="layui-icon layui-icon-form" style=" color:#f27700;"></i>  </label>
+		  
+    <div class="layui-input-inline">
+      <select name="quiz">
+          <option value="">请选择您的一级专业</option>
+          <optgroup label="市场">
+            <option value="产业互联网产品专业">产业互联网产品专业</option>
+			<option value="市场营销">市场营销</option>
+            <option value="个人及家庭互联网产品专业">个人及家庭互联网产品专业</option>
+          </optgroup>
+          <optgroup label="技术">
+            <option value="IT">IT</option>
+            <option value="运行与维护">运行与维护</option>
+			<option value="网络建设">网络建设</option>
+          </optgroup>
+        </select>
+    </div>
+    <div class="layui-input-inline">
+      <select name="quiz2">
+        <option value="">请选择二级专业</option>
+        <option value="规划与架构">规划与架构</option>
+        <option  value="业务与需求">业务与需求</option>
+        <option value="研发与测试">研发与测试</option>
+        <option value="生产与运维">生产与运维</option>
+        <option value="大数据与云计算">大数据与云计算</option>
+		<option value="其他">其他</option>
+		  
+        <option value="网络监控">网络监控</option>
+        <option value="核心网">核心网</option>
+        <option value="移动无线网">移动无线网</option>
+        <option value="IT">IT</option>
+		 <option value="应急与安全">应急与安全</option>
+        <option value="动力配套、局房">动力配套、局房</option>
+        <option value="其他">其他</option>
+		  
+        <option value="建设管理与创新">建设管理与创新</option>
+        <option value="网络承接与接入">网络承接与接入</option>
+		 <option value="支撑及其他">支撑及其他</option>
+      </select>
+    </div>
+    
+	</div>
+</form>
+  
+<div class="layui-tab">
+	
+	 <a class="layui-btn layui-btn-lg layui-btn-primary layui-btn-radius con" href="SendM.html">下一页</a>
+</div>	
+	
+	<!--<div id="footer" class="layui-footer footer">
+         <p>Copyright © 2018 Beijing Unicom</p>
+	</div>-->
+  
+		
+<script src="layui/layui.all.js"></script>	
+<script src="layui/layui.js" charset="utf-8"></script>
+
+<script>
+layui.use(['element','form', 'layedit'], function(){
+  var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+  var form = layui.form
+  ,layer = layui.layer
+  
+  
+  //监听导航点击
+  element.on('nav(demo)', function(elem){
+    //console.log(elem)
+    layer.msg(elem.text());
+  });
+});
+	
+form.on('select()')
+
+  
+	
+	
+</script>
+</body>
+</html>
